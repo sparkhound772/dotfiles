@@ -1,0 +1,36 @@
+{
+    //General
+    "telemetry.telemetryLevel": "off",
+    "editor.renderLineHighlight": "none",
+    "editor.guides.indentation": false,
+    "window.menuBarVisibility": "toggle",
+    "editor.minimap.enabled": false,
+
+    // Colors, font & cursor
+    "workbench.colorTheme": "Monokai",
+    "editor.fontSize": 13,
+    "editor.cursorBlinking": "solid",
+    "workbench.colorCustomizations": {
+        "[Monokai*][Tomorrow*][Kimbie*][*Dark*][Abyss]": {
+            "editor.background": "#000000"
+        },
+        "[Solarized Dark]": {
+            "editorCursor.foreground": "#7d2ba3"
+        }
+    },
+
+    // VIM
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
+    ],
+
+    // HTML & PHP
+    "files.associations": { "*.module": "php" },
+    "php.validate.run": "onType",
+    "html.format.templating": true,
+    "workbench.activityBar.location": "hidden",
+            
+}

@@ -23,6 +23,11 @@ set ruler
 "colorscheme lunaperche
 "colorscheme ron
 colorscheme murphy
+"On kali:
+hi Comment ctermfg=4
+hi String ctermfg=7
+hi Statement ctermfg=5
+hi Normal ctermfg=6
 
 " WILDMENU
 set wildmenu

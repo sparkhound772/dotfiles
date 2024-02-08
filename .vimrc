@@ -3,77 +3,123 @@
 " Remember also to configure the system to parse both files (see /etc/vim/vimrc),
 " otherwise this file will override the default.
 
+
 " VARIOUS
+
+" Disable compatibility with Vi (could cause problems apparently)
 set nocompatible
+
+" Self-explanatory
 syntax on
+
+" Line numbering on
 set number
+
+" Indent 4 spaces
 set shiftwidth=4
+
+" Set tabsize to 4 spaces
 set tabstop=4
-set incsearch
+
+" Convert tabs to spaces
+set expandtab
+
+" Highlight search
 set hlsearch
+
+" Incrementally highlight search?
+set incsearch
+
+" Match regardless of case when searching
 set ignorecase
+
+" Override 'ignorecase' if search contains upper case characters
 set smartcase
+
+" Show what mode we're in
 set showmode
+
+" Show current line and word number at bottom
 set ruler
 
+
 " APPEARENCE
+
+" Favs from the default - choose:
 "colorscheme torte
 "colorscheme zaibatsu
 "colorscheme pablo
 "colorscheme lunaperche
 "colorscheme ron
 colorscheme murphy
-"On kali:
+
+"If on Kali using 'murphy', also enable
 hi Comment ctermfg=4
 hi String ctermfg=7
 hi Statement ctermfg=5
 hi Normal ctermfg=6
 
+
 " WILDMENU
+
+" Options for autocomplete menu in command mode
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" MAPPINGS
+
+" MAPPINGS & MACROS
+
 inoremap jj <Esc>
 nnoremap o o<Esc>
 nnoremap O O<Esc>
-"nnoremap n nzz
-"nnoremap N Nzz
-noremap <c-up> <c-w>+    
-noremap <c-down> <c-w>-
-noremap <c-left> <c-w>>
-noremap <c-right> <c-w><
-
-" PROGRAMMING
-"filetype plugin on
-let python_highlight_all=1
-set omnifunc=syntaxcomplete#Complete
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+nnoremap n nzz
+nnoremap N Nzz
 let @p = ':w | !pylint %'
 let @r = ':w | !python3 %'
 
-" TRIAL
-"set foldmethod=indent
-"set foldlevel=99
-"filetype on
-"filetype indent on
 
-" SOURCE DEFAULTS (Manjaro)
-runtime! defaults.vim
+" PROGRAMMING
 
-" VIMSCRIPT ---------------------------------------------------------------------------------------------- {{{
+" Extra language specific highlighting
+let python_highlight_all=1
 
-"" Set foldmethod=marker.
+" General autocompletion
+set omnifunc=syntaxcomplete#Complete
+
+" Python specific autocompletion (Vim version with Python reqired, check `vim
+" --version`)
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
+" Unsure what it does and whether necessary
+"filetype plugin on
+
+
+" SOURCE DEFAULTS (for Manjaro)
+"runtime! defaults.vim
+
+
+" OTHER
+
+" Open folded sections: <z-o> 
+" Close folded sections: z-c> 
 augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END 
 
+
+" EVALUATE ---------------------------------------------------------------------------------------------- {{{
+
+"set foldmethod=indent
+"set foldlevel=99
+"filetype on
+"filetype indent on
+
 " If HTML, indent 2 spaces.
 "autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 "
-" Highlight whitespace."
+" Highlight whitespace.
 " highlight BadWhitespace ctermbg=red guibg=red
 " autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 

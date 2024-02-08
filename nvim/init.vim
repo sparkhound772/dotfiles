@@ -9,14 +9,17 @@
 " Line numbering on
 set number
 
-" Indent 4 spaces
-set shiftwidth=4
-
-" Set tabsize to 4 spaces
+" Set tabsize to 4 columns
 set tabstop=4
 
 " Convert tabs to spaces
 set expandtab
+
+" Interpret spaces as tabs so 4 spaces will be deleted with 1 backspace
+set softtabstop=4           
+
+" Autoindent 4 spaces
+set shiftwidth=4
 
 " Match regardless of case when searching
 set ignorecase
@@ -26,6 +29,7 @@ set smartcase
 
 " Show what mode we're in
 set showmode
+
 
 " APPEARENCE
 

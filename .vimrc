@@ -87,19 +87,18 @@ let @r = ':w | !python3 %'
 " Extra language specific highlighting
 let python_highlight_all=1
 
-" General autocompletion
-set omnifunc=syntaxcomplete#Complete
-
-" Python specific autocompletion (Vim version with Python reqired, check `vim
-" --version`)
+" Python specific ompletion (Vim version with Python reqired, check `vim
+" --version`). 
+" Hypothesis: this might provide better completion for Python than
+" the more generic completion below, and will also override it 
+" for .py files.
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
+" Generic (but perhaps inferior) completion for all files other than .py files.
+set omnifunc=syntaxcomplete#Complete
 
 " Unsure what it does and whether necessary
 "filetype plugin on
-
-
-" SOURCE DEFAULTS (for Manjaro)
-"runtime! defaults.vim
 
 
 " OTHER
@@ -110,6 +109,10 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END 
+
+
+" SOURCE DEFAULTS (for Manjaro)
+"runtime! defaults.vim
 
 
 " EVALUATE ---------------------------------------------------------------------------------------------- {{{

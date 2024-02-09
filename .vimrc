@@ -119,33 +119,14 @@ augroup END
 "filetype on
 "filetype indent on
 
-" If HTML, indent 2 spaces.
-"autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
-"
-" Highlight whitespace.
-" highlight BadWhitespace ctermbg=red guibg=red
-" autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-" From: https://realpython.com/vim-and-python-a-match-made-in-heaven/ (all the below)
-" To add the proper PEP 8 indentation, add the following to your .vimrc:
-" This will give you the standard four spaces when you hit tab, 
-" ensure your line length doesn’t go beyond 80 characters, 
-" and store the file in a Unix format so you don’t get a bunch of conversion 
-" issues when checking into GitHub and/or sharing with other users.
 "au BufNewFile,BufRead *.py
-"    \ set tabstop=4
-"    \ set softtabstop=4
-"    \ set shiftwidth=4
 "    \ set textwidth=79
-"    \ set expandtab
-"    \ set autoindent
 "    \ set fileformat=unix
 
-" For full stack development, you can use another au command for each filetype:
 "au BufNewFile,BufRead *.js, *.html, *.css
-"    \ set tabstop=2
 "    \ set softtabstop=2
 "    \ set shiftwidth=2
+"    \ set tabstop=2
 
 " }}}	
 

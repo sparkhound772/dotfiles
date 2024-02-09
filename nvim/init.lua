@@ -47,6 +47,10 @@ vim.fn.setreg('p', ':w | !pylint %', 'c')
 vim.fn.setreg('r', ':w | !python3 %', 'c')
 
 
+-- PROGRAMMING
+vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+
+
 -- OTHER
 
 -- Open folded sections: <z-o> 

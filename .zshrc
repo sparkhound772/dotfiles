@@ -1,4 +1,4 @@
-# Appended the below to the original .zsrc or .bashrc on the system being used.
+# Append the below to the original .zsrc or .bashrc on the system being used.
 
 bindkey '^[[3;5~' forward-kill-word		# Delete word to the right with Ctrl + K
 

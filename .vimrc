@@ -95,7 +95,14 @@ let python_highlight_all=1
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
 " Generic (but perhaps inferior) completion for all files other than .py files.
-set omnifunc=syntaxcomplete#Complete
+" Sets completion for this file only if a specific plugin does
+" not already exist for that filetype.
+if has("autocmd") && exists("+omnifunc")
+	autocmd Filetype *
+		    \	if &omnifunc == "" |
+		    \		setlocal omnifunc=syntaxcomplete#Complete |
+		    \	endif
+    endif
 
 " Unsure what it does and whether necessary
 "filetype plugin on

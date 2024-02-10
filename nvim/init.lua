@@ -1,4 +1,10 @@
--- VARIOUS
+-- Open fold under cursor: <z-o> or <l> or <h>
+-- Close fold under cursor: z-c> or <l> or <h>
+-- Open all folds: <zr>
+-- Close all folds: <zm>
+
+
+-- VARIOUS ------------------------------------------------------------------------- {{{
 
 -- Line numbering on
 vim.opt.number = true
@@ -24,19 +30,22 @@ vim.opt.smartcase = true
 -- Show what mode we're in
 vim.opt.showmode = true
 
+vim.cmd('autocmd FileType lua setlocal foldmethod=marker')
 
--- APPEARENCE
+-- }}}	
+
+
+-- APPEARENCE ---------------------------------------------------------------------- {{{
 
 -- Favs from the default - choose:
---vim.cmd('colorscheme torte')
---vim.cmd('colorscheme zaibatsu')
---vim.cmd('colorscheme pablo')
---vim.cmd('colorscheme lunaperche')
---vim.cmd('colorscheme ron')
-vim.cmd('colorscheme murphy')
+vim.cmd('colorscheme lunaperche')
+--vim.cmd('colorscheme industry')
+--vim.cmd('colorscheme murphy')
+
+-- }}}	
 
 
--- MAPPINGS & MACROS
+-- KEYMAPPINGS & MACROS (Plugin specifics are under their respective sections) ----- {{{
 
 vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
@@ -46,22 +55,47 @@ vim.api.nvim_set_keymap('n', 'O', 'O<Esc>', { noremap = true, silent = true })
 vim.fn.setreg('p', ':w | !pylint %', 'c')
 vim.fn.setreg('r', ':w | !python3 %', 'c')
 
+-- }}}	
 
--- PROGRAMMING
-vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+-- LAZY PLUGINS -------------------------------------------------------------------- {{{
+
+-- local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+--if not vim.loop.fs_stat(lazypath) then
+--  vim.fn.system({
+--    "git",
+--    "clone",
+--    "--filter=blob:none",
+--    "https://github.com/folke/lazy.nvim.git",
+--    "--branch=stable", -- latest stable release
+--    lazypath,
+--  })
+--end
+--vim.opt.rtp:prepend(lazypath)
+
+-- Mapleader: <Space>
+-- Apparently should be set before lazy.
+--vim.g.mapleader = " "
+
+-- require("lazy").setup({
+--    'neovim/nvim-lspconfig',
+--})
+
+-- }}}	
+
+-- NON-LAZY PLUGINS -------------------------------------------------------------------- {{{
+
+-- Loads ~/.config/nvim/lua/plugins/nvim_lspconfig.lua (read for details and keymaps).
+-- nvim-lspconfig & pyright needs to be installed,
+-- for example with system package manager and npm,
+-- or with plugin manager and language server manager such as mason.
+-- <C-x><C-o> (omnifunc) triggers lspconfig completion by default,
+-- on newer nvim versions.
+--require('plugins.nvim_lspconfig')
+
+-- }}}	
 
 
--- OTHER
-
--- Open folded sections: <z-o> 
--- Close folded sections: z-c> 
-vim.cmd('augroup filetype_vim')
-vim.cmd('autocmd!')
-vim.cmd('autocmd FileType vim setlocal foldmethod=marker')
-vim.cmd('augroup END')
-
-
--- EVALUATE (and convert to Lua) ---------------------------------------------------------------------------------------------- {{{
+-- EVALUATE (and convert to Lua) --------------------------------------------------- {{{
 
 -- Extra language specific highlighting
 --let python_highlight_all=1
@@ -85,9 +119,5 @@ vim.cmd('augroup END')
 --    \ set tabstop=2
 --    \ set softtabstop=2
 --    \ set shiftwidth=2
-
--- }}}	
-
--- PLUGINS ---------------------------------------------------------------------------------------------- {{{
 
 -- }}}	

@@ -57,30 +57,58 @@ vim.fn.setreg('r', ':w | !python3 %', 'c')
 
 -- }}}	
 
+
 -- LAZY PLUGINS -------------------------------------------------------------------- {{{
 
--- local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
---if not vim.loop.fs_stat(lazypath) then
---  vim.fn.system({
---    "git",
---    "clone",
---    "--filter=blob:none",
---    "https://github.com/folke/lazy.nvim.git",
---    "--branch=stable", -- latest stable release
---    lazypath,
---  })
---end
---vim.opt.rtp:prepend(lazypath)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
 -- Mapleader: <Space>
--- Apparently should be set before lazy.
+-- apparently should be set before Lazy.
 --vim.g.mapleader = " "
 
--- require("lazy").setup({
---    'neovim/nvim-lspconfig',
---})
+require("lazy").setup({
+  {
+    'neovim/nvim-lspconfig',
+      dependencies = {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+      },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function () 
+      local configs = require("nvim-treesitter.configs")
+      configs.setup({
+        ensure_installed = { "lua", "vim", "vimdoc", "query", "python", "javascript", "html" },
+        sync_install = false,
+        highlight = { enable = true },
+        indent = { enable = true },  
+      })
+    end
+  },
+})
+
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("lspconfig").pyright.setup {}
+
+-- Load keymappings for LSP
+require('plugins.nvim_lspconfig')
 
 -- }}}	
+
 
 -- NON-LAZY PLUGINS -------------------------------------------------------------------- {{{
 
@@ -88,9 +116,10 @@ vim.fn.setreg('r', ':w | !python3 %', 'c')
 -- nvim-lspconfig & pyright needs to be installed,
 -- for example with system package manager and npm,
 -- or with plugin manager and language server manager such as mason.
--- <C-x><C-o> (omnifunc) triggers lspconfig completion by default,
--- on newer nvim versions.
 --require('plugins.nvim_lspconfig')
+
+-- If on older nvim version uncomment:
+--vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
 -- }}}	
 

@@ -1,15 +1,13 @@
 -- Loaded by ~/.config/nvim/init.lua
+
+-- Uncomment and use if not Lazy + Mason.
 -- nvim-lspconfig & pyright needs to be installed,
 -- for example with system package manager and npm,
--- or with plugin manager and language server manager such as mason.
--- <C-x><C-o> (omnifunc) triggers lspconfig completion by default,
--- on newer nvim versions.
-local lspconfig = require('lspconfig')
-lspconfig.pyright.setup {}
--- If on older nvim version uncomment:
---vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+--local lspconfig = require('lspconfig')
+--lspconfig.pyright.setup {}
 
--- Make Ctrl-Space trigger completion.
+-- <C-x><C-o> (omnifunc) triggers lspconfig completion.
+-- Map <C-Space> to <C-x>.
 vim.api.nvim_set_keymap('i', '<C-Space>', '<C-X>', { noremap = true, silent = true })
 
 -- BELOW CONFIG FROM: https://github.com/neovim/nvim-lspconfig
@@ -27,7 +25,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     -- Enable completion triggered by <c-x><c-o>
-    --vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -51,4 +49,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
-

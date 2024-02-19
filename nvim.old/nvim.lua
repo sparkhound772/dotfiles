@@ -34,7 +34,7 @@ vim.opt.smartcase = true
 -- Show what mode we're in
 vim.opt.showmode = true
 
-splitright = true
+vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.cmd('autocmd FileType lua setlocal foldmethod=marker')
@@ -71,7 +71,6 @@ vim.fn.setreg('r', ':w | !python3 %', 'c')
 -- or with plugin manager and language server manager such as mason.
 
 -- }}}	
-
 
 -- EVALUATE (and convert to Lua) --------------------------------------------------- {{{
 

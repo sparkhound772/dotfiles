@@ -1,6 +1,6 @@
 # dotfiles
 
-The Neovim config files now has it's ![own repo](https://github.com/sparkhound772/nvim.git).
+The Neovim config files now has their ![own repo](https://github.com/sparkhound772/nvim.git).
 
 A simpler and plugin-free version remains here for when that's desired.
 

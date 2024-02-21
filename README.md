@@ -10,3 +10,5 @@ _zsh-syntax-highlighting_
 _zsh-history-substring-search_
 
 __.vimrc__ possibly need some updating, but should contain the basics needed.
+
+__rc.toml__ for Alacritty is sourcing themes from [alacritty/alacritty-theme](https://github.com/alacritty/alacritty-theme)

@@ -1,0 +1,23 @@
+# Append to base config and adjust for system at hand.
+
+bindsym $mod+d exec rofi -modes drun#window#run -show drun -show-icons
+#bindsym $mod+d exec rofi -modes window#drun#run#calc -show window -show-icons
+bindsym $mod+b exec feh --bg-scale --randomize ~/Pictures/wallpapers/favs
+bindsym $mod+Print exec xfce4-screenshooter --no-border --region --save ~/Pictures/screenshots/
+
+default_border pixel 0
+default_floating_border pixel 0
+#default_border none
+
+gaps inner 13px
+#gaps outer 5px
+
+exec --no-startup-id lxsession &
+exec --no-startup-id picom &
+exec xmodmap -e "pointer = 3 2 1"
+exec feh --bg-scale --randomize ~/Pictures/wallpapers/favs
+
+# Kali specific below
+exec xrandr --output Virtual-1 --mode 1920x1080
+exec --no-startup-id nitrogen --restore
+exec xmodmap -e "keycode 133 = Super_L"

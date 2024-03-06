@@ -56,11 +56,11 @@ set ruler
 "colorscheme ron
 colorscheme murphy
 
-"If on Kali using 'murphy', also enable
-hi Comment ctermfg=4
-hi String ctermfg=7
-hi Statement ctermfg=5
-hi Normal ctermfg=6
+"If on Kali using 'murphy', possibly also enable
+#hi Comment ctermfg=4
+#hi String ctermfg=7
+#hi Statement ctermfg=5
+#hi Normal ctermfg=6
 
 
 " WILDMENU

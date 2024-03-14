@@ -1,21 +1,65 @@
-# Append to base config and adjust for system at hand.
 
+# Personal settings to be appended to the default.
+#
+# Remember to remove the duplicate default keybindings.
+#
+# Dependencies:
+#
+# i3-wm
+# i3status-rust || polybar (status bar)
+# picom (compositor for transparency etc)
+# lxappearance (GTK themes)
+# nitrogen & feh (wallpaper management)
+# lxsession || dex
+# rofi (application search and start menu)
+
+# start a terminal
+bindsym $mod+Return exec alacritty -e tmux
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# split in horizontal orientation
+bindsym $mod+Shift+h split h
+# split in vertical orientation
+bindsym $mod+Shift+v split v
+
+# make some types of windows floating
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+for_window [class="Blueman-manager" instance="blueman-manager"] floating enable
+
+# always quit existing polybar and reload a new one upon i3 reload
+exec_always polybar-msg cmd quit
+exec_always --no-startup-id polybar --reload
+
+# custom keybindings
 bindsym $mod+d exec rofi -modes drun#window#run -show drun -show-icons
 #bindsym $mod+d exec rofi -modes window#drun#run#calc -show window -show-icons
 bindsym $mod+b exec feh --bg-scale --randomize ~/Pictures/wallpapers/favs
 bindsym $mod+Print exec xfce4-screenshooter --no-border --region --save ~/Pictures/screenshots/
 
+# borders
 default_border pixel 0
-default_floating_border pixel 0
-#default_border none
+default_floating_border pixel 3
 
-gaps inner 13px
-#gaps outer 5px
+#gaps
+gaps inner 10px
+gaps outer 5px
+#gaps top -10px
 
+# applications to be started by i3
 exec --no-startup-id lxsession &
 exec --no-startup-id picom &
-exec xmodmap -e "pointer = 3 2 1"
 exec feh --bg-scale --randomize ~/Pictures/wallpapers/favs
+
+# doesn't seem to work
+exec xmodmap -e "pointer = 3 2 1"
+
+# various
+focus_follows_mouse no
 
 # Kali specific below
 exec xrandr --output Virtual-1 --mode 1920x1080

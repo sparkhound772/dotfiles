@@ -1,5 +1,5 @@
 
-# Personal settings to be appended to the default.
+# Personal settings to be appended to the default config file.
 #
 # Remember to remove the duplicate default keybindings.
 #
@@ -16,7 +16,7 @@
 # start a terminal
 bindsym $mod+Return exec alacritty -e tmux
 
-# change focus
+# change focus using Vim keys
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -35,17 +35,17 @@ for_window [class="Blueman-manager" instance="blueman-manager"] floating enable
 exec_always polybar-msg cmd quit
 exec_always --no-startup-id polybar --reload
 
-# custom keybindings
+# other various keybindings
 bindsym $mod+d exec rofi -modes drun#window#run -show drun -show-icons
 #bindsym $mod+d exec rofi -modes window#drun#run#calc -show window -show-icons
 bindsym $mod+b exec feh --bg-scale --randomize ~/Pictures/wallpapers/favs
 bindsym $mod+Print exec xfce4-screenshooter --no-border --region --save ~/Pictures/screenshots/
 
-# borders
+# window borders
 default_border pixel 0
 default_floating_border pixel 3
 
-#gaps
+# window gaps
 gaps inner 10px
 gaps outer 5px
 #gaps top -10px
@@ -55,10 +55,10 @@ exec --no-startup-id lxsession &
 exec --no-startup-id picom &
 exec feh --bg-scale --randomize ~/Pictures/wallpapers/favs
 
-# doesn't seem to work
+# reverse mouse key order (but doesn't seem to work)
 exec xmodmap -e "pointer = 3 2 1"
 
-# various
+# possibly self explanatory :)
 focus_follows_mouse no
 
 # Kali specific below

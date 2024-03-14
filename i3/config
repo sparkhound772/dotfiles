@@ -13,7 +13,7 @@
 # lxsession || dex
 # rofi (application search and start menu)
 
-# start a terminal
+# let's use Alacritty as our terminal and autostart Tmux upon launch 
 bindsym $mod+Return exec alacritty -e tmux
 
 # change focus using Vim keys

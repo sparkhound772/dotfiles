@@ -1,6 +1,6 @@
 # dotfiles
 
-Full Neovim config: ![own repo](https://github.com/sparkhound772/nvim.git).
+Full Neovim config: ![https://github.com/sparkhound772/nvim.git]
 
 __nvim.old__ here is a plugin-free one-file version for when that's desired.
 
